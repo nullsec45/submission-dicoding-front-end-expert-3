@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Restaurant Apps</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="./app.webmanifest">
+  <script src="https://kit.fontawesome.com/af2ff99e20.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <button id="content_skip" class="content_skip">Skip To Content <i class="fas fa-arrow-right"></i></button>
+  <header>
+    <nav id="navigationDrawer">
+      <div class="navbar_list">
+        <a href="/" class="logo">GoResto</a>
+        <ul class="navs navbar_items">
+          <li><a href="/#mainContent">Home</a></li>
+          <li><a href="#/search">Search</a></li>
+          <li><a href="#/favorite">Favorite</a></li>
+        </ul>
+        <button class="hamburger_icon" id="hamburgerIcon">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      <div class="navbar_responsive" id="navbarResponsive">
+        <a href="/#mainContent">Home</a>
+        <a href="#/search">Search</a>
+        <a href="#/favorite">Favorite</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="jumbotron" id="hero">
+      <h1>Cari resto murah, lengkap, dan enak buat nongkrong ?</h1>
+      <h1>GoResto Ajah!</h1>
+      <picture>
+        <source srcset="./images/heros/hero-image_2.jpg">
+        </source>
+        <img src="./images/heros/hero-image_2.jpg" alt="Hero Image" class="" />
+      </picture>
+    </div>
+    <div id="mainContent"></div>
+  </main>
+
+  <footer tabindex="0">
+    <p tabindex="0">Copyright &copy; 2023 - <span class="logo" tabindex="0">GoResto</span> All rights reserved.</p>
+  </footer>
+</body>
+
+</html>
