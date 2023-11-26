@@ -1,0 +1,10 @@
+{
+    "id": "restaurant-catalogue-1",
+    "start_url": "./index.html",
+    "name": "Restaurant Catalog 1",
+    "short_name": "Restaurant Lite",
+    "description": "Restaurant Catalog For Search Restaurant",
+    "display": "standalone",
+    "background_color": "#FFFFFF",
+    "theme_color": "#0d6efd"
+}
