@@ -8,7 +8,9 @@
     "build": "webpack --config webpack.prod.js",
     "serve": "http-server dist",
     "test": "jest",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "run-buld": "npm run build || npm run serve",
+    "lint": "eslint ./src/"
   },
   "keywords": [],
   "author": "your_name <your.email@domain.com>",
