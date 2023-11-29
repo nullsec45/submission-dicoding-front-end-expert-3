@@ -5,6 +5,6 @@ const CONFIG = {
     DATABASE_NAME: 'db-daftar-restaurant',
     DATABASE_VERSION: 1,
     OBJECT_STORE_NAME: 'object-store-daftar-restaurant',
-}
+};
 
 export default CONFIG;

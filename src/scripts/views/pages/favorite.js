@@ -3,7 +3,7 @@ import {
   createRestaurantCardTemplate,
   createAPIErrorTemplate,
   alertErrorTemplate,
-  loadingAPITemplate
+  loadingAPITemplate,
 } from '../templates/template-creator';
 
 const Like = {
@@ -17,36 +17,33 @@ const Like = {
   },
 
   async afterRender(mainContent) {
-    mainContent.style.height = "50vmax";
+    mainContent.style.height = '50vmax';
     const getAllRestaurantsDB = await FavoriteRestaurant.getAllRestaurants();
     const daftarRestaurantContainer = document.querySelector('#restaurantContent');
-
 
     daftarRestaurantContainer.innerHTML = loadingAPITemplate();
 
     setTimeout(() => {
       if (getAllRestaurantsDB.error) {
-        alertErrorTemplate("API Error", getAllRestaurantsDB.message)
-        daftarRestaurantContainer.insertAdjacentHTML(`afterbegin`, createAPIErrorTemplate("Tidak ada restaurant yang ditemukan :("));
-        return
+        alertErrorTemplate('API Error', getAllRestaurantsDB.message);
+        daftarRestaurantContainer.insertAdjacentHTML('afterbegin', createAPIErrorTemplate('Tidak ada restaurant yang ditemukan :('));
       } else {
-        mainContent.style.height = "auto";
-        daftarRestaurantContainer.innerHTML = "";
+        mainContent.style.height = 'auto';
+        daftarRestaurantContainer.innerHTML = '';
         const daftarRestaurant = getAllRestaurantsDB;
 
         daftarRestaurant.forEach((restaurant) => {
-          const container_card_restaurant = document.createElement("div");
-          container_card_restaurant.classList.add("container_card_restaurant");
+          const containerCardRestaurant = document.createElement('div');
+          containerCardRestaurant.classList.add('container_card_restaurant');
 
-          container_card_restaurant.insertAdjacentHTML(`afterbegin`, createRestaurantCardTemplate(restaurant));
+          containerCardRestaurant.insertAdjacentHTML('afterbegin', createRestaurantCardTemplate(restaurant));
 
-          daftarRestaurantContainer.appendChild(container_card_restaurant);
-
+          daftarRestaurantContainer.appendChild(containerCardRestaurant);
         });
 
-        document.addEventListener("click", function (event) {
-          if (event.target.matches("#detailRestaurant")) {
-            const id = event.target.dataset.id;
+        document.addEventListener('click', (event) => {
+          if (event.target.matches('#detailRestaurant')) {
+            const { id } = event.target.dataset;
 
             document.location.href = `#/detail/${id}`;
           }

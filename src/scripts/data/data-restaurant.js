@@ -10,12 +10,18 @@ class DataRestaurant {
     static async reviewRestaurant(reviewObj) {
         const response = await fetch(API_ENDPOINT.POST_REVIEW_RESTAURANT, {
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
             },
-            method: "POST",
+            method: 'POST',
 
-            body: JSON.stringify({ id: reviewObj.restaurantId, name: reviewObj.inputNameValue, review: reviewObj.inputReviewValue })
+            body: JSON.stringify(
+                {
+                    id: reviewObj.restaurantId,
+                    name: reviewObj.inputNameValue,
+                    review: reviewObj.inputReviewValue,
+                },
+            ),
         });
 
         const responseJson = await response.json();

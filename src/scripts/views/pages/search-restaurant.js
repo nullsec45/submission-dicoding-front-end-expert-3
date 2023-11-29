@@ -1,13 +1,13 @@
-import DataRestaurant from "../../data/data-restaurant";
+import DataRestaurant from '../../data/data-restaurant';
 
 import {
   createRestaurantCardTemplate,
   alertErrorTemplate,
-  loadingAPITemplate
+  loadingAPITemplate,
 } from '../templates/template-creator';
 
-async function searchRestaurant(name) {
-  return await DataRestaurant.searchRestaurant(name);
+function searchRestaurant(name) {
+  return DataRestaurant.searchRestaurant(name);
 }
 
 const Search = {
@@ -29,18 +29,18 @@ const Search = {
   },
 
   async afterRender(mainContent) {
-    mainContent.style.height = "50vmax";
-    const buttonSearch = document.querySelector("#buttonSearch");
-    const inputSearch = document.querySelector("#inputSearch");
+    mainContent.style.height = '50vmax';
+    const buttonSearch = document.querySelector('#buttonSearch');
+    const inputSearch = document.querySelector('#inputSearch');
 
-    buttonSearch.addEventListener("click", () => {
+    buttonSearch.addEventListener('click', () => {
       const inputValue = inputSearch.value;
 
       const daftarRestaurantContainer = document.querySelector('#restaurantContent');
 
-      if (inputValue.trim("") == "") {
-        alertErrorTemplate("Search Error", "Restaurant Name Not Empty!")
-        return
+      if (inputValue.trim('') === '') {
+        alertErrorTemplate('Search Error', 'Restaurant Name Not Empty!');
+        return;
       }
 
       daftarRestaurantContainer.innerHTML = loadingAPITemplate();
@@ -48,33 +48,33 @@ const Search = {
       setTimeout(() => {
         searchRestaurant(inputValue).then((res) => {
           if (res.error) {
-            mainContent.style.height = "50vmax";
-            alertErrorTemplate("Search Error", res.message);
-          } else if (res.founded == "0") {
-            mainContent.style.height = "50vmax";
-            alertErrorTemplate("Search Error", `Restaurant ${inputValue} Not Found!`);
-            daftarRestaurantContainer.innerHTML = ``;
+            mainContent.style.height = '50vmax';
+            alertErrorTemplate('Search Error', res.message);
+          } else if (res.founded === '0') {
+            mainContent.style.height = '50vmax';
+            alertErrorTemplate('Search Error', `Restaurant ${inputValue} Not Found!`);
+            daftarRestaurantContainer.innerHTML = '';
           } else {
-            inputSearch.value = "";
-            mainContent.style.height = "auto";
-            daftarRestaurantContainer.innerHTML = "";
+            inputSearch.value = '';
+            mainContent.style.height = 'auto';
+            daftarRestaurantContainer.innerHTML = '';
 
             res.restaurants.forEach((resto) => {
-              const container_card_restaurant = document.createElement("div");
-              container_card_restaurant.classList.add("container_card_restaurant");
+              const containerCardRestaurant = document.createElement('div');
+              containerCardRestaurant.classList.add('container_card_restaurant');
 
-              container_card_restaurant.insertAdjacentHTML(`afterbegin`, createRestaurantCardTemplate(resto));
+              containerCardRestaurant.insertAdjacentHTML('afterbegin', createRestaurantCardTemplate(resto));
 
-              daftarRestaurantContainer.appendChild(container_card_restaurant);
-            })
+              daftarRestaurantContainer.appendChild(containerCardRestaurant);
+            });
           }
         }).catch((error) => {
-          mainContent.style.height = "50vmax";
-          daftarRestaurantContainer.innerHTML = "";
-          alertErrorTemplate("Search Error", error)
-        })
-      }, 1000)
-    })
+          mainContent.style.height = '50vmax';
+          daftarRestaurantContainer.innerHTML = '';
+          alertErrorTemplate('Search Error', error);
+        });
+      }, 1000);
+    });
   },
 };
 

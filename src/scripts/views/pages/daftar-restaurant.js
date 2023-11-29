@@ -1,9 +1,9 @@
-import DataRestaurant from "../../data/data-restaurant";
+import DataRestaurant from '../../data/data-restaurant';
 import {
   createRestaurantCardTemplate,
   createAPIErrorTemplate,
   alertErrorTemplate,
-  loadingAPITemplate
+  loadingAPITemplate,
 } from '../templates/template-creator';
 
 const DaftarRestaurant = {
@@ -18,35 +18,32 @@ const DaftarRestaurant = {
   },
 
   async afterRender(mainContent) {
-    mainContent.style.height = "auto";
+    mainContent.style.height = 'auto';
     const getAPIRestaurant = await DataRestaurant.restaurantList();
     const daftarRestaurantContainer = document.querySelector('#restaurantContent');
-
 
     daftarRestaurantContainer.innerHTML = loadingAPITemplate();
 
     setTimeout(() => {
       if (getAPIRestaurant.error) {
-        alertErrorTemplate("API Error", getAPIRestaurant.message)
-        daftarRestaurantContainer.insertAdjacentHTML(`afterbegin`, createAPIErrorTemplate("Tidak ada restaurant yang ditemukan :("));
-        return
+        alertErrorTemplate('API Error', getAPIRestaurant.message);
+        daftarRestaurantContainer.insertAdjacentHTML('afterbegin', createAPIErrorTemplate('Tidak ada restaurant yang ditemukan :('));
       } else {
-        daftarRestaurantContainer.innerHTML = "";
+        daftarRestaurantContainer.innerHTML = '';
         const daftarRestaurant = getAPIRestaurant.restaurants;
 
         daftarRestaurant.forEach((restaurant) => {
-          const container_card_restaurant = document.createElement("div");
-          container_card_restaurant.classList.add("container_card_restaurant");
+          const containerCardRestaurant = document.createElement('div');
+          containerCardRestaurant.classList.add('container_card_restaurant');
 
-          container_card_restaurant.insertAdjacentHTML(`afterbegin`, createRestaurantCardTemplate(restaurant));
+          containerCardRestaurant.insertAdjacentHTML('afterbegin', createRestaurantCardTemplate(restaurant));
 
-          daftarRestaurantContainer.appendChild(container_card_restaurant);
-
+          daftarRestaurantContainer.appendChild(containerCardRestaurant);
         });
 
-        document.addEventListener("click", function (event) {
-          if (event.target.matches("#detailRestaurant")) {
-            const id = event.target.dataset.id;
+        document.addEventListener('click', (event) => {
+          if (event.target.matches('#detailRestaurant')) {
+            const { id } = event.target.dataset;
 
             document.location.href = `#/detail/${id}`;
           }

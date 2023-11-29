@@ -1,11 +1,10 @@
+import Swal from 'sweetalert2';
 import API_ENDPOINT from '../../globals/api-endpoint';
 import Helper from '../../utils/helper';
-import Swal from "sweetalert2";
-
 
 const createRestaurantDetailTemplate = (resto) => `
           <h2 class="resto_title" tabindex="0">${resto.name}</h2>
-          <img class="resto_poster" src="${API_ENDPOINT.IMAGE_RESTAURANT("large", resto.pictureId)}" alt="${resto.name}" tabindex="0"/>
+          <img class="resto_poster" src="${API_ENDPOINT.IMAGE_RESTAURANT('large', resto.pictureId)}" alt="${resto.name}" tabindex="0"/>
           <div class="resto_info" tabindex="0">
             <h3 tabindex="0">Information</h3>
             <h4 tabindex="0">Category</h4>
@@ -34,7 +33,7 @@ const createRestaurantDetailTemplate = (resto) => `
 const createRestaurantCardTemplate = (resto) => `
          <div class="card_restaurant" tabindex = "0" >
                 <div class="card_image" tabindex="0">
-                        <img src="${API_ENDPOINT.IMAGE_RESTAURANT("large", resto.pictureId)}" tabindex="0">
+                        <img src="${API_ENDPOINT.IMAGE_RESTAURANT('large', resto.pictureId)}" tabindex="0">
                 </div>
                 <div class="card_content" tabindex="0">
                         <h2 class="card_title" tabindex="0">${resto.name}</h2>
@@ -56,11 +55,11 @@ const createRestaurantCardTemplate = (resto) => `
 
 const alertErrorTemplate = (title, text) => {
   Swal.fire({
-    icon: "error",
+    icon: 'error',
     title,
-    text
+    text,
   });
-}
+};
 
 const createAPIErrorTemplate = (message) => `
     <div class="api_error" >
@@ -116,5 +115,5 @@ export {
   alertErrorTemplate,
   loadingAPITemplate,
   createAddReviewTemplate,
-  createReviewTemplate
+  createReviewTemplate,
 };
