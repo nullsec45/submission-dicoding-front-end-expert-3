@@ -1,6 +1,8 @@
 import Swal from 'sweetalert2';
 import API_ENDPOINT from '../../globals/api-endpoint';
 import Helper from '../../utils/helper';
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 const createRestaurantDetailTemplate = (resto) => `
           <h2 class="resto_title" tabindex="0">${resto.name}</h2>
@@ -33,7 +35,7 @@ const createRestaurantDetailTemplate = (resto) => `
 const createRestaurantCardTemplate = (resto) => `
          <div class="card_restaurant" tabindex = "0" >
                 <div class="card_image" tabindex="0">
-                        <img src="${API_ENDPOINT.IMAGE_RESTAURANT('large', resto.pictureId)}" tabindex="0">
+                        <img class="lazyload" src="${API_ENDPOINT.IMAGE_RESTAURANT('large', resto.pictureId)}" tabindex="0">
                 </div>
                 <div class="card_content" tabindex="0">
                         <h2 class="card_title" tabindex="0">${resto.name}</h2>
@@ -73,14 +75,14 @@ const loadingAPITemplate = () => `
    </div>
 `;
 
-const createLikeButtonTemplate = () => `
-  <button aria-label="like this movie" id="likeButton" class="like" >
+const createLikeRestaurantButtonTemplate = () => `
+  <button aria-label="sukai restaurant ini" id="likeButton" class="like" >
     <i class="fa fa-heart-o" aria-hidden="true"></i>
   </button>
 `;
 
-const createLikedButtonTemplate = () => `
-  <button aria-label="unlike this movie" id="likeButton" class="like" >
+const createUnlikeRestaurantButtonTemplate = () => `
+  <button aria-label="tidak sukai restaurant ini" id="likeButton" class="like" >
     <i class="fa fa-heart" aria-hidden="true"></i>
   </button>
 `;
@@ -88,8 +90,8 @@ const createLikedButtonTemplate = () => `
 const createAddReviewTemplate = (id) => `
       <div class="add_review"> 
           <div class="review_layout">
-              <input class="input_name" id="inputName" placeholder="Your Name">
-              <textarea class="input_review" id="inputReview" rows="7" cols="10" placeholder="Your Review"></textarea>
+              <input class="input_name" id="inputName" placeholder="Your Name" name="username">
+              <textarea class="input_review" id="inputReview" rows="7" cols="10" placeholder="Your Review" name="review"></textarea>
           </div>
           <div clas="review_layout">
            
@@ -110,8 +112,8 @@ export {
   createRestaurantDetailTemplate,
   createRestaurantCardTemplate,
   createAPIErrorTemplate,
-  createLikeButtonTemplate,
-  createLikedButtonTemplate,
+  createLikeRestaurantButtonTemplate,
+  createUnlikeRestaurantButtonTemplate,
   alertErrorTemplate,
   loadingAPITemplate,
   createAddReviewTemplate,
