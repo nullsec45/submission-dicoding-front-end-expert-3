@@ -1,4 +1,5 @@
 import FavoriteRestaurant from '../../data/favorite-restaurant';
+
 import {
   createRestaurantCardTemplate,
   createAPIErrorTemplate,
@@ -26,6 +27,11 @@ const Like = {
     setTimeout(() => {
       if (getAllRestaurantsDB.error) {
         alertErrorTemplate('API Error', getAllRestaurantsDB.message);
+        daftarRestaurantContainer.innerHTML = "";
+        daftarRestaurantContainer.insertAdjacentHTML('afterbegin', createAPIErrorTemplate('Tidak ada restaurant yang ditemukan :('));
+      } else if (getAllRestaurantsDB.length === 0) {
+        alertErrorTemplate('API Error', "tidak ada restaurant favorite yang ditampilkan");
+        daftarRestaurantContainer.innerHTML = "";
         daftarRestaurantContainer.insertAdjacentHTML('afterbegin', createAPIErrorTemplate('Tidak ada restaurant yang ditemukan :('));
       } else {
         mainContent.style.height = 'auto';
