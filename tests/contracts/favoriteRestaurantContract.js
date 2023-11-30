@@ -38,7 +38,13 @@ const itActsAsFavoriteRestauranteModel = (favoriteRestaurant) => {
 
         await favoriteRestaurant.deleteRestaurant(4);
 
-        expect(await favoriteRestaurant.getAllRestaurants()).toEqual([{ id: 1 }, { id: 2 }, { id: 3 }]);
+        expect(
+            await favoriteRestaurant.getAllRestaurants(),
+        ).toEqual(
+            [{ id: 1 },
+            { id: 2 },
+            { id: 3 }],
+        );
     });
 
     it('harus bisa mencari restaurant', async () => {

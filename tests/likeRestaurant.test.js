@@ -16,7 +16,7 @@ describe('Tambah ke favorite sebuah restaurant', () => {
         expect(document.querySelector('[aria-label="sukai restaurant ini"]')).toBeTruthy();
     });
 
-    it("tidak boleh menampilkan tombol tidak suka ketika restaurant belum pernah disukai sebelumnya", async () => {
+    it('tidak boleh menampilkan tombol tidak suka ketika restaurant belum pernah disukai sebelumnya', async () => {
         await TestFactories.createLikeButtonPresenterWitRestaurant({ id: 1 });
 
         expect(document.querySelector('[aria-label="tidak sukai restaurant ini"]')).toBeFalsy();

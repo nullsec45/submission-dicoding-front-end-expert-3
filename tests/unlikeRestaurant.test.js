@@ -1,8 +1,6 @@
 import FavoriteRestaurant from '../src/scripts/data/favorite-restaurant';
 import * as TestFactories from './helpers/testFactories';
 
-
-
 describe('Batal Sukai Restaurant', () => {
     const addLikeButtonContainer = () => {
         document.body.innerHTML = '<div id="likeButtonContainer"></div>';

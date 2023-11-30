@@ -3,9 +3,8 @@ const assert = require('assert');
 Feature('Menyukai Restaurant');
 
 Before(({ I }) => {
-    I.amOnPage("/#/favorite")
+    I.amOnPage('/#/favorite');
 });
-
 
 Scenario('menampilkan tidak ada restaurant  yang disukai', ({ I }) => {
     I.see('Tidak ada restaurant yang ditemukan :(');
@@ -29,7 +28,7 @@ Scenario('menyukai satu restaurant', async ({ I }) => {
     I.amOnPage('/#/favorite');
     I.seeElement('.container_card_restaurant');
 
-    const firstRestaurantLiked = locate(".card_title").first();
+    const firstRestaurantLiked = locate('.card_title').first();
     const likedRestaurantTitle = await I.grabTextFrom(firstRestaurantLiked);
 
     assert.strictEqual(firstRestaurantTitle, likedRestaurantTitle);

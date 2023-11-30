@@ -3,7 +3,7 @@ const assert = require('assert');
 Feature('Batal Menyukai Restaurant');
 
 Before(async ({ I }) => {
-    I.amOnPage("/")
+    I.amOnPage('/');
 
     I.seeElement('.card_title');
 
@@ -22,12 +22,11 @@ Scenario('menampilkan ada restaurant  yang disukai', async ({ I }) => {
     I.amOnPage('/#/favorite');
     I.seeElement('.container_card_restaurant');
 
-    const firstRestaurantLiked = locate(".card_title").first();
+    const firstRestaurantLiked = locate('.card_title').first();
     const likedRestaurantTitle = await I.grabTextFrom(firstRestaurantLiked);
 
     assert.strictEqual(firstRestaurantTitle, likedRestaurantTitle);
 });
-
 
 Scenario('menampilkan ada restaurant  yang disukai', async ({ I }) => {
     I.amOnPage('/');
@@ -37,15 +36,13 @@ Scenario('menampilkan ada restaurant  yang disukai', async ({ I }) => {
     I.amOnPage('/#/favorite');
     I.seeElement('.container_card_restaurant');
 
-    const firstRestaurantLiked = locate(".card_title").first();
+    const firstRestaurantLiked = locate('.card_title').first();
     const likedRestaurantTitle = await I.grabTextFrom(firstRestaurantLiked);
 
     assert.strictEqual(firstRestaurantTitle, likedRestaurantTitle);
 });
 
-
 Scenario('Batal menyukai restaurant', async ({ I }) => {
-
     I.amOnPage('/#/favorite');
 
     I.seeElement('.btn_detail');
@@ -56,5 +53,4 @@ Scenario('Batal menyukai restaurant', async ({ I }) => {
 
     I.amOnPage('/#/favorite');
     I.see('Tidak ada restaurant yang ditemukan :(');
-
 });
