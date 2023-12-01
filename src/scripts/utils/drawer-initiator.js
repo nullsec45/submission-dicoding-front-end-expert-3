@@ -9,7 +9,6 @@ const DrawerInitiator = {
 
             this._toggleDrawerWidth(event, drawer, width);
         });
-
     },
 
     _toggleDrawer(event, drawer) {
