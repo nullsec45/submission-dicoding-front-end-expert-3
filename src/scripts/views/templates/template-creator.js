@@ -35,7 +35,7 @@ const createRestaurantDetailTemplate = (resto) => `
 const createRestaurantCardTemplate = (resto) => `
          <div class="card_restaurant" tabindex = "0" >
                 <div class="card_image" tabindex="0">
-                        <img class="lazyload" src="${API_ENDPOINT.IMAGE_RESTAURANT('large', resto.pictureId)}" tabindex="0">
+                        <img loading="lazy" class="lazyload" src="${API_ENDPOINT.IMAGE_RESTAURANT('large', resto.pictureId)}" data-src="${API_ENDPOINT.IMAGE_RESTAURANT('large', resto.pictureId)}" tabindex="0">
                 </div>
                 <div class="card_content" tabindex="0">
                         <h2 class="card_title" tabindex="0">${resto.name}</h2>
@@ -71,7 +71,7 @@ const createAPIErrorTemplate = (message) => `
 
 const loadingAPITemplate = () => `
   <div class="loading_api" >
-    <i class="fa-solid fa-spinner fa-spin"></i>
+     <i class="fa fa-spinner" aria-hidden="true"></i>
    </div>
 `;
 

@@ -22,10 +22,10 @@ class FavoriteMovieView {
     showRestaurants(restaurants) {
         let html;
 
-        console.log(restaurants)
-
         if (restaurants.length > 0) {
-            html = restaurants.forEach((restaurant, index) => createRestaurantCardTemplate(restaurant));
+            html = restaurants.forEach(
+                (restaurant) => createRestaurantCardTemplate(restaurant),
+            );
         } else {
             html = this._getEmptRestaurantTemplate();
         }

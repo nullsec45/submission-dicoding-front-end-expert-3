@@ -1,5 +1,5 @@
 const DrawerInitiator = {
-    init({ button, drawer, contentSkip }) {
+    init({ button, drawer }) {
         button.addEventListener('click', (event) => {
             this._toggleDrawer(event, drawer);
         });
@@ -10,9 +10,6 @@ const DrawerInitiator = {
             this._toggleDrawerWidth(event, drawer, width);
         });
 
-        contentSkip.addEventListener('click', () => {
-            document.location.href = '#mainContent';
-        });
     },
 
     _toggleDrawer(event, drawer) {

@@ -10,7 +10,7 @@
     "test": "jest ./tests/",
     "test:watch": "jest --watchAll",
     "run-buld": "npm run build || npm run serve",
-    "lint": "eslint ./src/",
+    "lint": "eslint ./src/ --fix",
     "e2e": "codeceptjs run --steps",
     "build-image": "node sharp.js"
   },

@@ -21,7 +21,6 @@ class FavoriteRestaurantSearchPresenter {
             foundRestaurants = await this._favoriteRestaurant.getAllRestaurants();
         }
 
-
         this._showFoundRestaurants(foundRestaurants);
     }
 

@@ -38,6 +38,15 @@ class App {
         this._content.innerHTML = '';
         this._content.insertAdjacentHTML('afterbegin', await page.render());
         await page.afterRender(this._mainContent);
+        const skipLinkElem = document.querySelector('#contentSkip');
+
+        skipLinkElem.addEventListener('click', (event) => {
+
+            event.preventDefault();
+
+            document.querySelector('#mainContent').focus();
+
+        });
     }
 }
 

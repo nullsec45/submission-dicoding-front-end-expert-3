@@ -9,7 +9,6 @@ const app = new App({
     drawer: document.querySelector('#navbarResponsive'),
     hero: document.querySelector('#hero'),
     mainContent: document.querySelector('#mainContent'),
-    contentSkip: document.querySelector('#contentSkip'),
 });
 
 window.addEventListener('hashchange', () => {
